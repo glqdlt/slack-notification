@@ -20,15 +20,15 @@ public class MessageSenderTest {
     SlackConfig slackConfig;
 
 
-    @Test(expected = HttpClientErrorException.class)
-    public void sendMessageFail() {
-//        HttpClientErrorException 에 대한 테스트 추가
-//         아래 text 는 json 으로 날려야함
+    @Test()
+    public void sendMessageString() {
         messageSender.notification("hi");
+//         > hi
     }
 
-    @Test
-    public void sendMessageSuccess() {
+    @Test()
+    public void sendMessageJson() {
         messageSender.notification("{'text' : 'hihi'}");
+//        > {'text' : 'hihi'}
     }
 }

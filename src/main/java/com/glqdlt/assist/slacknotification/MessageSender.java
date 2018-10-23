@@ -3,6 +3,9 @@ package com.glqdlt.assist.slacknotification;
 
 import org.springframework.web.client.RestTemplate;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class MessageSender {
 
     private final SlackConfig slackConfig;
@@ -14,7 +17,9 @@ public class MessageSender {
     }
 
     public void notification(String text) {
-        restTemplate.postForLocation(slackConfig.getUrl(), text);
+        Map<String,String> body = new HashMap<>();
+        body.put("text",text);
+        restTemplate.postForLocation(slackConfig.getUrl(), body);
     }
 
 }
